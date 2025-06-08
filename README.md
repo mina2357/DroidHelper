@@ -1,37 +1,48 @@
-<p align="center">
-  <img src="droidhelper-logo.jpg.jpg" width="300" alt="DroidHelper Logo"/>
-</p>
-# 📱 DroidHelper
+![droidhelper-logo](droidhelper-logo.jpg)
 
-أداة بسيطة للتحكم في أجهزة أندرويد باستخدام ADB  
-Simple tool to interact with Android devices via ADB
+# DroidHelper - Simple Android Tools  
+📱 أدوات أندرويد بسيطة وسهلة الاستخدام
 
----
-
-![Version](https://img.shields.io/badge/version-1.0-blue)
-![Status](https://img.shields.io/badge/status-stable-green)
-![Python](https://img.shields.io/badge/python-3.10+-yellow)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)  
+[![GitHub stars](https://img.shields.io/github/stars/mina2357/DroidHelper?style=social)](https://github.com/mina2357/DroidHelper/stargazers)  
+[![GitHub forks](https://img.shields.io/github/forks/mina2357/DroidHelper?style=social)](https://github.com/mina2357/DroidHelper/network/members)
 
 ---
 
-## ✨ Features / المميزات
-
-- عرض معلومات نظام أندرويد
-- استخراج مسار التطبيق من اسم الحزمة
-- تشغيل التطبيقات عن بُعد
-- قراءة سجل Logcat
+## Table of Contents  
+- [About](#about)  
+- [Features](#features)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Contributing](#contributing)  
+- [License](#license)
 
 ---
 
-## 📦 Usage / الاستخدام
-## 📜 License | الترخيص
+## About  
+DroidHelper is a simple Python toolset for Android users. It helps in retrieving device info, extracting apps, running apps, and reading logs using ADB commands.
 
-This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.  
-هذا المشروع مرخّص بموجب رخصة MIT – راجع ملف [LICENSE](./LICENSE) لمزيد من التفاصيل.
+DroidHelper هو مجموعة أدوات بسيطة بلغة بايثون لمستخدمي أندرويد. يساعد في عرض معلومات الجهاز، استخراج التطبيقات، تشغيل التطبيقات، وقراءة اللوجات باستخدام أوامر ADB.
 
-1. تأكد من تثبيت ADB على الجهاز
-2. شغل السكربت بـ Python:
+---
+
+## Features  
+- Show Android version  
+- Extract app path by package name  
+- Launch apps by package name  
+- Read recent device logs (logcat)
+
+---
+
+## Installation  
+1. Ensure you have Python installed.  
+2. Connect your Android device with USB debugging enabled.  
+3. Install ADB tools on your PC or use Termux on device.
+
+---
+
+## Usage  
+Run the script and choose from the menu options:  
 
 ```bash
-python DroidHelper.py
-
+python droidhelper.py
