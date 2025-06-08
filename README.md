@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="droidhelper-logo.jpg.jpg" width="300" alt="DroidHelper Logo"/>
+</p>
 # 📱 DroidHelper
 
 أداة بسيطة للتحكم في أجهزة أندرويد باستخدام ADB  
