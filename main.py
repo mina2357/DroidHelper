@@ -1,70 +1,55 @@
-import os
-import subprocess
+# DroidHelper - ADB Android Tools
+# أداة سطر أوامر بسيطة للتعامل مع أجهزة أندرويد باستخدام ADB
+# Author: mina2357
+# GitHub: https://github.com/mina2357/DroidHelper
 
-def check_adb_installed():
-    """يتأكد إن adb متثبت."""
-    try:
-        subprocess.run(["adb", "version"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return True
-    except Exception:
-        return False
+import os
 
 def run_adb_command(command):
-    """يشغل أمر adb ويرجع الناتج."""
-    try:
-        result = subprocess.run(f'adb {command}', shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        print(result.stdout)
-    except subprocess.CalledProcessError as e:
-        print(f"❌ خطأ في تنفيذ الأمر: {e.stderr.strip()}")
-
-def list_menu():
-    print("\n📱 DroidHelper - أدوات أندرويد بسيطة")
-    print("1. عرض معلومات النظام")
-    print("2. استخراج مسار تطبيق")
-    print("3. تشغيل تطبيق")
-    print("4. قراءة لوجات (logcat)")
-    print("5. نسخ ملف من الجهاز إلى الكمبيوتر")
-    print("6. نسخ ملف من الكمبيوتر إلى الجهاز")
-    print("7. خروج")
-
-def copy_from_device():
-    source = input("اكتب مسار الملف على الجهاز: ")
-    dest = input("اكتب مسار الحفظ على الكمبيوتر: ")
-    run_adb_command(f"pull {source} {dest}")
-
-def copy_to_device():
-    source = input("اكتب مسار الملف على الكمبيوتر: ")
-    dest = input("اكتب مسار الحفظ على الجهاز: ")
-    run_adb_command(f"push {source} {dest}")
+    result = os.popen(f'adb {command}').read()
+    print(result)
 
 def main():
-    if not check_adb_installed():
-        print("❌ adb غير مثبت أو غير موجود في PATH. ثبت adb وجرب مرة أخرى.")
-        return
+    print("\n📱 DroidHelper - أدوات أندرويد بسيطة عبر ADB\n")
+    print("1. عرض إصدار النظام")
+    print("2. استخراج تطبيق (Package Path)")
+    print("3. تشغيل تطبيق")
+    print("4. قراءة اللوج (logcat)")
+    print("5. عرض جميع التطبيقات")
+    print("6. حذف تطبيق")
+    print("7. نسخ ملف من الهاتف إلى الكمبيوتر")
+    print("8. نسخ ملف من الكمبيوتر إلى الهاتف")
+    print("9. خروج")
 
-    while True:
-        list_menu()
-        choice = input("اختر رقم: ")
+    choice = input("\nاختر رقم: ")
 
-        if choice == "1":
-            run_adb_command("shell getprop ro.build.version.release")
-        elif choice == "2":
-            package = input("اكتب اسم الحزمة (package name): ")
-            run_adb_command(f"shell pm path {package}")
-        elif choice == "3":
-            package = input("اكتب اسم الحزمة (package name): ")
-            run_adb_command(f"shell monkey -p {package} -c android.intent.category.LAUNCHER 1")
-        elif choice == "4":
-            run_adb_command("logcat -d | tail -n 20")
-        elif choice == "5":
-            copy_from_device()
-        elif choice == "6":
-            copy_to_device()
-        elif choice == "7":
-            print("مع السلامة 👋")
-            break
-        else:
-            print("❌ خيار غير صحيح، حاول مرة أخرى.")
+    if choice == "1":
+        run_adb_command("shell getprop ro.build.version.release")
+    elif choice == "2":
+        package = input("اكتب اسم الباكدج: ")
+        run_adb_command(f"shell pm path {package}")
+    elif choice == "3":
+        package = input("اكتب اسم الباكدج: ")
+        run_adb_command(f"shell monkey -p {package} -c android.intent.category.LAUNCHER 1")
+    elif choice == "4":
+        run_adb_command("logcat -d | tail -n 20")
+    elif choice == "5":
+        run_adb_command("shell pm list packages")
+    elif choice == "6":
+        package = input("اكتب اسم الباكدج اللي هتحذفه: ")
+        run_adb_command(f"uninstall {package}")
+    elif choice == "7":
+        remote_path = input("📥 اكتب مسار الملف على الهاتف: ")
+        local_path = input("💾 اكتب مسار الحفظ على الكمبيوتر: ")
+        run_adb_command(f"pull {remote_path} {local_path}")
+    elif choice == "8":
+        local_path = input("📤 اكتب مسار الملف على الكمبيوتر: ")
+        remote_path = input("📱 اكتب مكان الحفظ على الهاتف: ")
+        run_adb_command(f"push {local_path} {remote_path}")
+    elif choice == "9":
+        print("👋 مع السلامة")
+    else:
+        print("❌ اختيار غير صحيح")
 
 if __name__ == "__main__":
     main()
