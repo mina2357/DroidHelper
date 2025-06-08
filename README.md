@@ -30,3 +30,7 @@ Simple tool to interact with Android devices via ADB
 
 ```bash
 python DroidHelper.py
+## 📜 License | الترخيص
+
+This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.  
+هذا المشروع مرخّص بموجب رخصة MIT – راجع ملف [LICENSE](./LICENSE) لمزيد من التفاصيل.
