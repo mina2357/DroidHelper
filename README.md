@@ -1,4 +1,4 @@
-![droidhelper-logo](droidhelper-logo.jpg)
+![droidhelper-logo](droidhelper-logo.jpg.jpg)
 
 # DroidHelper - Simple Android Tools  
 📱 أدوات أندرويد بسيطة وسهلة الاستخدام
