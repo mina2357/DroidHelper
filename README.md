@@ -1,5 +1,7 @@
 ![droidhelper-logo](droidhelper-logo.jpg.jpg)
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mina2357/mina2357/main/mina-dave-logo.svg?v=2" width="120" alt="mina logo"/>
+</p>
 # DroidHelper - Simple Android Tools  
 📱 أدوات أندرويد بسيطة وسهلة الاستخدام
 
